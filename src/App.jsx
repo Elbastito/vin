@@ -32,7 +32,7 @@ function App() {
     })
   }
   function onSubmitFunc(IDP){
-    fetch(`http://localhost:3000/v1/notas/${IDP}`, {
+    fetch(`https://vin-api.onrender.com/v1/notas/${IDP}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function App() {
 
   const [vin, setVin] = React.useState({});
   React.useEffect(() => {
-    fetch("http://localhost:3000/v1/notas")
+    fetch("https://vin-api.onrender.com/v1/notas")
       .then(res => res.json())
       .then(data => setVin(data.notaPadre))
       .catch(error => {
@@ -55,7 +55,7 @@ function App() {
       })
   }, []);
   function regresarAlVinSr(){
-    fetch("http://localhost:3000/v1/notas")
+    fetch("https://vin-api.onrender.com/v1/notas")
     .then(res => res.json())
     .then((data) => {
       setVin(data.notaPadre)
@@ -67,7 +67,7 @@ function App() {
   }
   
   function cambioDeVin(id){
-      fetch(`http://localhost:3000/v1/notas/${id}?type=single`)
+      fetch(`https://vin-api.onrender.com/v1/notas/${id}?type=single`)
       .then(res => res.json())
       .then(data => setVin(data.notaEncontrada))
       .catch(error => {
@@ -79,7 +79,7 @@ function App() {
 
   const [vins,setVins] = React.useState([])
   React.useEffect(() => {
-    fetch(`http://localhost:3000/v1/notas/${vin._id}?type=multiple`)
+    fetch(`https://vin-api.onrender.com/v1/notas/${vin._id}?type=multiple`)
       .then(res => res.json())
       .then(data => setVins(data))
       .catch(error => {
@@ -88,7 +88,7 @@ function App() {
   }, [vin]);
 
   function borrarVin(){
-    fetch(`http://localhost:3000/v1/notas/${vin._id}`, {
+    fetch(`https://vin-api.onrender.com/v1/notas/${vin._id}`, {
     method: 'DELETE',
     })
     .then(response => {
