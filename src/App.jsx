@@ -197,7 +197,9 @@ function VinsJr(props){
 function NuevoVin(props){
   return(
     <form onSubmit={(event)=>{
-    props.manegarSubmit(props.idDelPapa)}} className='NuevoVin'>
+    props.manegarSubmit(props.idDelPapa)
+    event.preventDefault();
+    }} className='NuevoVin'>
       <input type="text" 
       placeholder='Titulo de nuevo vin'
       onChange={props.manegarCambioDeForm}
