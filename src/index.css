@@ -1,0 +1,174 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+  
+  
+.contenedor {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Primera fila se ajusta al contenido, segunda fila ocupa el espacio restante */
+    grid-template-columns: 100px 1fr; /* Primera columna ocupa 100px, segunda columna ocupa el espacio restante */
+    height: 100vh;
+}
+  
+.vinActual {
+    background-color: #86888A;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    grid-row: 1; /* Coloca el h1 en la primera fila */
+    grid-column: 2; /* Coloca el h1 en la segunda columna */
+    padding-bottom: 4px;
+}
+.vinActual h1 {
+    padding-right: 30px;
+}
+  
+.onClickMenu {
+    grid-row: 1 / span 2; /* Coloca el OnClickMenu en las filas 1 y 2 */
+    grid-column: 1; /* Coloca el OnClickMenu en la primera columna */
+    background-color: #d3d3d3;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+}
+  
+textarea {
+    grid-row: 2; /* Coloca el textarea en la segunda fila */
+    grid-column: 2; /* Coloca el textarea en la segunda columna */
+}
+  
+.contenedorVinsJr {
+    grid-row: 2; /* Coloca el VinsJr en la segunda fila */
+    grid-column: 2; /* Coloca el VinsJr en la segunda columna */
+}
+
+.onClickMenu ul {
+    list-style-type: none; /* Quita los estilos de viñetas de la lista */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+    margin: 0; /* Elimina los márgenes predeterminados de la lista */
+}
+
+#vinSrlogo{
+    width: 50px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.tools{
+    width: 28px;
+    height: auto;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.tools:hover{
+    background-color: rgba(134, 136, 138, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0px;
+} 
+
+
+.NuevoVin{
+    grid-row: 2; /* Coloca el VinsJr en la segunda fila */
+    grid-column: 2; /* Coloca el VinsJr en la segunda columna */
+}
+
+.vinsJr{
+    display: flex;
+    margin: 20px;
+}
+
+.vinsJr:hover {
+    background-color: rgba(134, 136, 138, 0.3);
+    border-radius: 10px; /* Color de fondo al pasar el cursor */
+    /* Otros estilos adicionales al pasar el cursor */
+  }
+
+.vinsJr h3{
+    margin: 20px;
+}
+
+#vinsJrlogo{
+    margin-left: 10px;
+    width: 50px;
+    height: auto;
+}
+
+.menuSiNo{
+    background-color: rgba(255, 0, 0, 0.5); /* Fondo rojo translúcido */
+    color: #ff4646; /* Texto en color rojo sólido */
+    padding: 10px;
+    text-align: center;
+}
+
+.menuSiNo div {
+    font-weight: bold;
+    font-size: 100px;
+    margin-bottom: 10px; 
+}
+
+.menuSiNo button {
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+  
+.menuSiNo button:hover {
+    background-color: #0056b3;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 450px;
+}
+  
+form input{
+    display: block;
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Raleway', sans-serif;
+    outline: none; /* Elimina el resaltado del input al escribir */font-weight: bold;
+    font-size: 1.2em;
+}
+
+  form textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Raleway', sans-serif;
+    resize: vertical; /* Permite redimensionar verticalmente la textarea */
+    height: 150px; /* Ajusta la altura según tus preferencias */
+    outline: none; /* Elimina el resaltado del input al escribir */
+  }
+  
+  
+  form button {
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+form #bar {
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+  }
