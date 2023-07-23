@@ -109,8 +109,8 @@ function App() {
     });
   }
 
-  function editarVin(){
-
+  function editarVin(event){
+    console.log(event.target.name)
   }
 
   return (
@@ -120,7 +120,7 @@ function App() {
       {enPantalla===1?
         <NuevoVin manegarCambioDeForm={manegarCambioDeForm} nuevoVinTitulo={nuevoVin.titulo} nuevoVinContenido={nuevoVin.contenido} manegarSubmit={onSubmitFunc} idDelPapa={vin._id}/>:null}
       {enPantalla===2?
-        <textarea name="Contenido" onChange={editarVin} defaultValue={vin.contenido}></textarea>:null}
+        <textarea name="contenido" onChange={editarVin} defaultValue={vin.contenido}></textarea>:null}
       {enPantalla===3?
       <div className='contenedorVinsJr'>
         {
