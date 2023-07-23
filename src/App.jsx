@@ -109,6 +109,10 @@ function App() {
     });
   }
 
+  function editarVin(){
+
+  }
+
   return (
     <div className="contenedor">
       <OnClickMenu renderizar={queSeRenderiza} acciondirectaVinSr={regresarAlVinSr} acciondirectaBorrarVin={borrarVin} noEliminarAlVinSr={vin.IDP}/>
@@ -116,7 +120,7 @@ function App() {
       {enPantalla===1?
         <NuevoVin manegarCambioDeForm={manegarCambioDeForm} nuevoVinTitulo={nuevoVin.titulo} nuevoVinContenido={nuevoVin.contenido} manegarSubmit={onSubmitFunc} idDelPapa={vin._id}/>:null}
       {enPantalla===2?
-        <textarea defaultValue={vin.contenido}></textarea>:null}
+        <textarea name="Contenido" onChange={editarVin} defaultValue={vin.contenido}></textarea>:null}
       {enPantalla===3?
       <div className='contenedorVinsJr'>
         {
