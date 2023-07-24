@@ -122,7 +122,7 @@ function App() {
 
   function onBlurMandarADB(){
     // Realizar la solicitud fetch al servidor para actualizar el documento en MongoDB con el método "PUT"
-    fetch(`https://vin-api.onrender.com/v1/notass/${vin._id}`, {
+    fetch(`https://vin-api.onrender.com/v1/notas/${vin._id}`, {
       method: 'PUT', // Utilizamos el método "PUT"
       headers: {
         'Content-Type': 'application/json',
