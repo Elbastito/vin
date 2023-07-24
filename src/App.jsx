@@ -32,7 +32,7 @@ function App() {
     })
   }
   function onSubmitFunc(IDP){
-    fetch(`http://localhost:3000/v1/notas/${IDP}`, {
+    fetch(`https://vin-api.onrender.com/v1/notas/${IDP}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function App() {
 
   const [vin, setVin] = React.useState({});
   React.useEffect(() => {
-    fetch("http://localhost:3000/v1/notas")
+    fetch("https://vin-api.onrender.com/v1/notas")
       .then(res => res.json())
       .then(data => setVin(data.notaPadre))
       .catch(error => {
@@ -55,7 +55,7 @@ function App() {
       })
   }, []);
   function regresarAlVinSr(){
-    fetch("http://localhost:3000/v1/notas")
+    fetch("https://vin-api.onrender.com/v1/notas")
     .then(res => res.json())
     .then((data) => {
       setVin(data.notaPadre)
@@ -67,7 +67,7 @@ function App() {
   }
   
   function cambioDeVin(id){
-      fetch(`http://localhost:3000/v1/notas/${id}?type=single`)
+      fetch(`https://vin-api.onrender.com/v1/notas/${id}?type=single`)
       .then(res => res.json())
       .then(data => setVin(data.notaEncontrada))
       .catch(error => {
@@ -79,7 +79,7 @@ function App() {
 
   const [vins,setVins] = React.useState([])
   React.useEffect(() => {
-    fetch(`http://localhost:3000/v1/notas/${vin._id}?type=multiple`)
+    fetch(`https://vin-api.onrender.com/v1/notas/${vin._id}?type=multiple`)
       .then(res => res.json())
       .then(data => setVins(data))
       .catch(error => {
@@ -88,7 +88,7 @@ function App() {
   }, [vin]);
 
   function borrarVin(){
-    fetch(`http://localhost:3000/v1/notas/${vin._id}`, {
+    fetch(`https://vin-api.onrender.com/v1/notas/${vin._id}`, {
     method: 'DELETE',
     })
     .then(response => {
@@ -109,6 +109,41 @@ function App() {
     });
   }
 
+
+  function editarVin(event){
+    setVin((vinActual)=>{
+      return(
+        {
+          ...vinActual,
+          [event.target.name]: event.target.value
+        }
+      )
+    })
+  }
+
+  function onBlurMandarADB(){
+    // Realizar la solicitud fetch al servidor para actualizar el documento en MongoDB con el método "PUT"
+    fetch(`https://vin-api.onrender.com/v1/notass/${vin._id}`, {
+      method: 'PUT', // Utilizamos el método "PUT"
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(vin.contenido), // Enviamos el objeto con el campo "contenido" que queremos actualizar
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error al actualizar el documento');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Documento actualizado:', data);
+      })
+      .catch((error) => {
+        console.error('Error al actualizar el documento:', error);
+      });
+  };
+
   return (
     <div className="contenedor">
       <OnClickMenu renderizar={queSeRenderiza} acciondirectaVinSr={regresarAlVinSr} acciondirectaBorrarVin={borrarVin} noEliminarAlVinSr={vin.IDP}/>
@@ -116,7 +151,7 @@ function App() {
       {enPantalla===1?
         <NuevoVin manegarCambioDeForm={manegarCambioDeForm} nuevoVinTitulo={nuevoVin.titulo} nuevoVinContenido={nuevoVin.contenido} manegarSubmit={onSubmitFunc} idDelPapa={vin._id}/>:null}
       {enPantalla===2?
-        <textarea defaultValue={vin.contenido}></textarea>:null}
+       <textarea name="contenido" onChange={editarVin} onBlur={onBlurMandarADB} defaultValue={vin.contenido}></textarea>:null}
       {enPantalla===3?
       <div className='contenedorVinsJr'>
         {
@@ -197,7 +232,10 @@ function VinsJr(props){
 function NuevoVin(props){
   return(
     <form onSubmit={(event)=>{
-    props.manegarSubmit(props.idDelPapa)}} className='NuevoVin'>
+    props.manegarSubmit(props.idDelPapa)
+    event.preventDefault()
+    }
+    } className='NuevoVin'>
       <input type="text" 
       placeholder='Titulo de nuevo vin'
       onChange={props.manegarCambioDeForm}
