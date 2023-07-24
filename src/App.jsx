@@ -127,7 +127,7 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(vin.contenido), // Enviamos el objeto con el campo "contenido" que queremos actualizar
+      body: JSON.stringify(vin), // Enviamos el objeto con el campo "contenido" que queremos actualizar
     })
       .then((response) => {
         if (!response.ok) {
