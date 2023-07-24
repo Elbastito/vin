@@ -139,7 +139,42 @@ form input{
     font-size: 1.2em;
 }
 
-  form textarea {
+form textarea {
+  display: block;
+  width: 100%;
+  border: none;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Raleway', sans-serif;
+  resize: vertical; /* Permite redimensionar verticalmente la textarea */
+  height: 150px; /* Ajusta la altura según tus preferencias */
+  outline: none; /* Elimina el resaltado del input al escribir */
+}
+  
+  
+form button {
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+  
+form button:hover {
+  background-color: #0056b3;
+}
+  
+form #bar {
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+/* Estilos para la textarea */
+textarea {
     display: block;
     width: 100%;
     border: none;
@@ -147,28 +182,6 @@ form input{
     padding: 8px;
     border-radius: 4px;
     font-family: 'Raleway', sans-serif;
-    resize: vertical; /* Permite redimensionar verticalmente la textarea */
-    height: 150px; /* Ajusta la altura según tus preferencias */
     outline: none; /* Elimina el resaltado del input al escribir */
-  }
+}
   
-  
-  form button {
-    background-color: #007aff;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Raleway', sans-serif;
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
-  
-form #bar {
-    height: 1px;
-    background-color: #ccc;
-    margin: 10px 0;
-  }
