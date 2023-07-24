@@ -110,8 +110,39 @@ function App() {
   }
 
   function editarVin(event){
-    console.log(event.target.name)
+    setVin((vinActual)=>{
+      return(
+        {
+          ...vinActual,
+          [event.target.name]: event.target.value
+        }
+      )
+    })
   }
+
+  function onBlurMandarADB(){
+    // Realizar la solicitud fetch al servidor para actualizar el documento en MongoDB con el método "PUT"
+    fetch(`https://vin-api.onrender.com/v1/notass/${vin._id}`, {
+      method: 'PUT', // Utilizamos el método "PUT"
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(vin.contenido), // Enviamos el objeto con el campo "contenido" que queremos actualizar
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error al actualizar el documento');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Documento actualizado:', data);
+      })
+      .catch((error) => {
+        console.error('Error al actualizar el documento:', error);
+      });
+  };
+
 
   return (
     <div className="contenedor">
@@ -120,7 +151,7 @@ function App() {
       {enPantalla===1?
         <NuevoVin manegarCambioDeForm={manegarCambioDeForm} nuevoVinTitulo={nuevoVin.titulo} nuevoVinContenido={nuevoVin.contenido} manegarSubmit={onSubmitFunc} idDelPapa={vin._id}/>:null}
       {enPantalla===2?
-        <textarea name="contenido" onChange={editarVin} defaultValue={vin.contenido}></textarea>:null}
+        <textarea name="contenido" onChange={editarVin} onBlur={onBlurMandarADB} defaultValue={vin.contenido}></textarea>:null}
       {enPantalla===3?
       <div className='contenedorVinsJr'>
         {
